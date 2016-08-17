@@ -1,4 +1,4 @@
-class PalettesController < ApplicationController
+class PalettesController < OpenReadController
   before_action :set_palette, only: [:show, :update, :destroy]
 
   # GET /palettes
@@ -18,7 +18,7 @@ class PalettesController < ApplicationController
   # POST /palettes
   # POST /palettes.json
   def create
-    @palette = Palette.new(palette_params)
+    @palette = current_user.palettes.build(palette_params)
 
     if @palette.save
       render json: @palette, status: :created, location: @palette
@@ -50,7 +50,7 @@ class PalettesController < ApplicationController
   private
 
     def set_palette
-      @palette = Palette.find(params[:id])
+      @palette = current_user.palettes.find(params[:id])
     end
 
     def palette_params
