@@ -4,7 +4,12 @@ class PalettesController < OpenReadController
   # GET /palettes
   # GET /palettes.json
   def index
-    @palettes = Palette.all
+
+    if params[:user_palettes] == "true"
+      @palettes = current_user.palettes
+    else
+      @palettes = Palette.all
+    end
 
     render json: @palettes
   end
