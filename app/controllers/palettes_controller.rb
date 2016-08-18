@@ -42,6 +42,8 @@ class PalettesController < OpenReadController
   # DELETE /palettes/1
   # DELETE /palettes/1.json
   def destroy
+    @palette = current_user.palettes.find(params[:id])
+
     @palette.destroy
 
     head :no_content
