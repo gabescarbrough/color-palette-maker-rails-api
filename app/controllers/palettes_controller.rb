@@ -49,11 +49,11 @@ class PalettesController < OpenReadController
 
   private
 
-    def set_palette
-      @palette = current_user.palettes.find(params[:id])
-    end
+  def set_palette
+    @palette = Palette.find(params[:id])
+  end
 
-    def palette_params
-      params.require(:palette).permit(:palette_name, :color1, :color2, :color3, :color4, :color5)
-    end
+  def palette_params
+    params.require(:palette).permit(:palette_name, :color1, :color2, :color3, :color4, :color5)
+  end
 end
