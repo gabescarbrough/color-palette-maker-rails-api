@@ -30,7 +30,7 @@ class PalettesController < OpenReadController
   # PATCH/PUT /palettes/1
   # PATCH/PUT /palettes/1.json
   def update
-    @palette = Palette.find(params[:id])
+    @palette = current_user.palettes.find(params[:id])
 
     if @palette.update(palette_params)
       head :no_content
