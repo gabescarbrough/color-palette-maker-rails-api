@@ -41,7 +41,7 @@ module ColorPaletteMaker
     # Cross-Origin Resource Sharing
     config.middleware.use Rack::Cors do
       allow do
-        origins ENV['CLIENT_ORIGIN'] || 'https://gabescarbrough.github.io/'
+        origins ENV['CLIENT_ORIGIN'] || 'https://gabescarbrough.github.io'
         resource '*',
                  headers: :any,
                  methods: [:options, :get,
